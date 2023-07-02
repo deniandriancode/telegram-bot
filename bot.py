@@ -1,13 +1,21 @@
 import os
 import logging
+import threading
+import server
 from telegram import Update
 from telegram.ext import filters, MessageHandler, ApplicationBuilder, ContextTypes, CommandHandler
+
+def web_server_thread():
+    server.start_http_server()
 
 def main():
     logging.basicConfig(
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
         level=logging.INFO
     )
+
+    web_thread = threading.Thread(target=web_server_thread)
+    web_thread.start()
 
     TELEGRAM_BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
 
@@ -26,6 +34,7 @@ def main():
     application.add_handler(echo_handler)
     
     application.run_polling()
+    web_thread.join()
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

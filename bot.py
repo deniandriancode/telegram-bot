@@ -6,17 +6,21 @@ from telegram import Update
 from telegram.ext import filters, MessageHandler, ApplicationBuilder, ContextTypes, CommandHandler
 
 def web_server_thread():
+    return
     server.start_http_server()
 
 def main():
+    ### Preparation
     logging.basicConfig(
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
         level=logging.INFO
     )
+    logging.FileHandler(filename='telegram.log', encoding='utf-8', mode='w')
 
     web_thread = threading.Thread(target=web_server_thread)
     web_thread.start()
 
+    ### Begin Bot
     TELEGRAM_BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
 
     async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):

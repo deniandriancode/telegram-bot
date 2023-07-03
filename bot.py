@@ -12,7 +12,7 @@ def web_server_thread():
 
 ### Handlers
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
+    await context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!", message_thread_id=update.message.message_thread_id)
 
 async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message_text = update.message.text

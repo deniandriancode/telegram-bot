@@ -40,7 +40,6 @@ def main():
     application.add_handler(echo_handler)
     
     application.run_polling()
-    web_thread.join()
 
 if __name__ == "__main__":
     main()

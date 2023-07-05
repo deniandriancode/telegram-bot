@@ -1,13 +1,8 @@
 import os
 import logging
 import threading
-import server
 from telegram import Update, InlineQueryResultArticle, InputTextMessageContent
 from telegram.ext import filters, MessageHandler, ApplicationBuilder, ContextTypes, CommandHandler, InlineQueryHandler
-
-def web_server_thread():
-    # return # TODO
-    server.start_http_server()
 
 
 ### Handlers

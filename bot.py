@@ -61,9 +61,6 @@ def main():
     )
     logging.FileHandler(filename='telegram.log', encoding='utf-8', mode='w')
 
-    web_thread = threading.Thread(target=web_server_thread)
-    web_thread.start()
-
     ### Begin Bot
     TELEGRAM_BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
 

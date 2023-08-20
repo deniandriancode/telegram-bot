@@ -6,7 +6,7 @@ from telegram.ext import filters, MessageHandler, ApplicationBuilder, ContextTyp
 
 
 ### Prefix Handlers
-async def test_pref(update: Update, context: CallbackContext):
+async def test_pref(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
     message_thread_id = update.message.message_thread_id
     await context.bot.send_message(chat_id=chat_id, text=f"TEST PASSED with message: {update.message.text} and args {context.args}", message_thread_id=message_thread_id)
